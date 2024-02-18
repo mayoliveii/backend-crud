@@ -10,7 +10,13 @@ class ListCustomersController {
 
   async handle(request: FastifyRequest, reply: FastifyReply) {
     try {
-      const result = await this.listCustomersService.execute(reply);
+      const { orderBy, startDate, endDate } = request.query as {
+        orderBy?: 'created_at_ASC' | 'created_at_DESC' | undefined;
+        startDate?: string | undefined;
+        endDate?: string | undefined;
+      };
+
+      const result = await this.listCustomersService.execute({ orderBy, startDate, endDate }, reply);
       reply.send(result);
     } catch (error) {
       reply.code(500).send({ error: "Failed to list customers" });

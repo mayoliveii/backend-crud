@@ -93,6 +93,17 @@ Example Request:
 Endpoint: `GET` / `http://localhost:8000/list-customers`
 Description: Retrieves a list of all customers.
 
+Query Parameters:
+
+- orderBy (string, optional): Sorting order for the list (`created_at_ASC` for ascending, `created_at_DESC` for descending).
+- startDate (string, optional): Start date for filtering customer records.
+- endDate (string, optional): End date for filtering customer records.
+
+Example Request:
+
+```gql
+http://localhost:8000/list-customers?startDate=2024-02-15T23:53:09.287Z&endDate=2024-02-17T23:53:09.287Z
+```
 
 ### Delete Customer
 Endpoint: `DELETE` / `http://localhost:8000/delete-customer`
