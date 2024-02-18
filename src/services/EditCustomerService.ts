@@ -37,6 +37,7 @@ class EditCustomerService {
         name,
         email,
         phone,
+        updated_at: new Date(),
       },
     });
 
