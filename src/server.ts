@@ -19,7 +19,7 @@ const registerPlugins = async (app: FastifyInstance) => {
 
 const startServer = async (app: FastifyInstance) => {
   try {
-    await app.listen({ port: 3000, host: "127.0.0.1" });
+    await app.listen({ port: 3001, host: "127.0.0.1" });
   } catch (err) {
     console.error(err);
     process.exit(1);
