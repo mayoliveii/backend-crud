@@ -22,11 +22,8 @@ class CreateCustomerController {
       const result = await this.createCustomer({ name, email, phone });
       this.sendSuccessResponse(reply, result);
     } catch (error) {
-      if (error instanceof Error) {
-        this.sendErrorResponse(reply, 500, error.message);
-      } else {
-        this.sendErrorResponse(reply, 500, "Failed to create customer");
-      }
+      const errorMessage = error.message || "Failed to create customer";
+      this.sendErrorResponse(reply, 500, errorMessage);
     }
   }
 }

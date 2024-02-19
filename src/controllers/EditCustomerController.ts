@@ -23,9 +23,8 @@ class EditCustomerController {
       const updatedCustomer = await this.editCustomer({ id, name, email, phone });
       this.sendSuccessResponse(reply, updatedCustomer);
     } catch (error) {
-      if (error instanceof Error) {
-        this.sendErrorResponse(reply, error);
-      }
+      const errorMessage = error.message || "Failed to edit customer";
+      this.sendErrorResponse(reply, new Error(errorMessage));
     }
   }
 }

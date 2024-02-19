@@ -20,7 +20,8 @@ class ListCustomersController {
       const result = await this.listCustomersService.execute({ orderBy, startDate, endDate, search }, reply);
       reply.send(result);
     } catch (error) {
-      reply.code(500).send({ error: "Failed to list customers" });
+      const errorMessage = error.message || "Failed to list customers";
+      reply.code(500).send({ error: errorMessage });
     }
   }
 }
