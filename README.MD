@@ -4,6 +4,10 @@
 
 This backend project is part of a CRUD (Create, Read, Update, Delete) application for user registration. The technology stack includes Node.js with TypeScript for the backend and integrates with a mongo database. 
 
+## Deployment
+The backend is deployed on Railway at the following URL: 
+> https://backend-crud-production-2c6d.up.railway.app
+
 ## Requirements
 
 - Node.js (v20.11.0)
@@ -68,6 +72,7 @@ npm run dev
 ```
 
 ## Endpoints
+**obs: You can also test the deployed version by using the provided [deployment URL](https://backend-crud-production-2c6d.up.railway.app).**
 
 ### Create Customer
 
