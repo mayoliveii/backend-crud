@@ -10,6 +10,7 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "sourceMap": true,
+    "rootDir": "./src",
     "outDir": "./dist"
   },
   "include": ["./src/**/*.ts"],
