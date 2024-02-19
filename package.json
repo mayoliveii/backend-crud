@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "prisma:studio": "npx prisma studio",
-    "build": "tsc -w",
+    "build": "tsc",
     "start": "node dist/server.js"
   },
   "keywords": [],
