@@ -1,5 +1,5 @@
 # Backend CRUD
-![Alt Text](./public/images/backend-image-readme.png)
+![BAckend img](./public/images/backend-img-readme.png)
 ## Description
 
 This backend project is part of a CRUD (Create, Read, Update, Delete) application for user registration. The technology stack includes Node.js with TypeScript for the backend and integrates with a mongo database. 
