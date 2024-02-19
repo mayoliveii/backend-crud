@@ -1,6 +1,8 @@
 import fastify, { FastifyInstance } from "fastify";
 import { routes } from "./routes";
 import cors from "@fastify/cors";
+import "dotenv/config";
+import { parse } from "path";
 
 const createApp = (): FastifyInstance => {
   const app = fastify({ logger: true });
@@ -19,7 +21,7 @@ const registerPlugins = async (app: FastifyInstance) => {
 
 const startServer = async (app: FastifyInstance) => {
   try {
-    await app.listen({ port: 3001, host: "127.0.0.1" });
+    await app.listen({ port: parseInt(process.env.PORT) || 3000 });
   } catch (err) {
     console.error(err);
     process.exit(1);
