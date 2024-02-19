@@ -5,6 +5,7 @@ interface ListCustomersProps {
   orderBy?: 'created_at_ASC' | 'created_at_DESC' | undefined;
   startDate?: string | undefined;
   endDate?: string | undefined;
+  search?: string | undefined;
 }
 
 class ListCustomersService {
@@ -14,7 +15,7 @@ class ListCustomersService {
     this.prisma = new PrismaClient();
   }
 
-  async execute({ orderBy, startDate, endDate }: ListCustomersProps, reply: FastifyReply) {
+  async execute({ orderBy, startDate, endDate, search }: ListCustomersProps, reply: FastifyReply) {
     try {
       const customers = await this.prisma.customer.findMany({
         where: {
@@ -22,19 +23,28 @@ class ListCustomersService {
             gte: startDate ? new Date(startDate) : undefined,
             lte: endDate ? new Date(endDate) : undefined,
           },
+          AND: search
+            ? {
+                OR: [
+                  { name: { contains: search } },
+                  { email: { contains: search } },
+                ],
+              }
+            : undefined,
         },
         orderBy: orderBy
           ? {
-            created_at: orderBy === 'created_at_ASC' ? 'asc' : 'desc',
-          }
+              created_at: orderBy === 'created_at_ASC' ? 'asc' : 'desc',
+            }
           : undefined,
       });
-
+  
       return customers;
     } catch (error: any) {
       reply.code(500).send({ error: `Failed to list customers. Error details: ${error.message}` });
     }
   }
+  
 }
 
 export { ListCustomersService };
