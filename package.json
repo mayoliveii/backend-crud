@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "prisma:studio": "npx prisma studio"
+    "prisma:studio": "npx prisma studio",
+    "build": "tsc -w",
+    "start": "node dist/server.js"
   },
   "keywords": [],
   "author": "",
